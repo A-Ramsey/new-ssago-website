@@ -1,0 +1,1 @@
+<a type="button" class="btn @if($isDanger) btn-danger @else btn-primary @endif m-1" href="{{ $link }}">{{ $title }}</a>
