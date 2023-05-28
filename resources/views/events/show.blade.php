@@ -13,10 +13,12 @@
         @auth
             <x-button link="{{ route('events.committee', ['id' => $event->id])}}" title="Committee" />
             @permission('event', $event)
+                <x-button link="{{ route('event-pages.index', ['eventId' => $event->id]) }}" title="Pages" />
                 <x-button link="{{ route('events.edit', ['eventId' => $event->id]) }}" title="Edit" />
                 <x-button link="{{ route('events.delete', ['eventId' => $event->id]) }}" title="Delete" is-danger="true" />
             @endpermission
         @endauth
     </div>
     @endauth
+    <x-event-page-menu :event="$event" />
 @endsection

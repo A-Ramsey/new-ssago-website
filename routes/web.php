@@ -9,6 +9,7 @@ use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TeamPinkController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,14 @@ Route::prefix('/events')->group(function () {
         Route::get('/{eventId}/edit', [EventController::class, 'edit'])->name('events.edit');
         Route::post('/{eventId}/edit', [EventController::class, 'update'])->name('events.update');
         Route::get('/{eventId}/delete', [EventController::class, 'destroy'])->name('events.delete');
+
+        Route::get('/{eventId}/pages', [EventPageController::class, 'index'])->name('event-pages.index');
+        Route::get('/{eventId}/pages/create', [EventPageController::class, 'create'])->name('event-pages.create');
+        Route::post('/{eventId}/pages/create', [EventPageController::class, 'store'])->name('event-pages.store');
+        Route::get('/{eventId}/pages/{eventPageId}/edit', [EventPageController::class, 'edit'])->name('event-pages.edit');
+        Route::post('/{eventId}/pages/{eventPageId}/edit', [EventPageController::class, 'update'])->name('event-pages.update');
+        Route::get('/{eventId}/pages/{eventPageId}/delete', [EventPageController::class, 'destroy'])->name('event-pages.delete');
     });
+    Route::get('/{eventId}/pages/{eventPageId}', [EventPageController::class, 'show'])->name('event-pages.show');
     Route::get('{id}/committee', [CommitteeController::class, 'showEventCommittee'])->name('events.committee');
 });
