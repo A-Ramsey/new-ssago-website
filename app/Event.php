@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Committee;
 use App\EventPage;
+use App\EventBookingPhase;
 
 class Event extends Model
 {
@@ -24,6 +25,12 @@ class Event extends Model
     {
         return $this->hasMany(EventPage::class);
     }
+
+    public function eventBookingPhases(): HasMany
+    {
+        return $this->hasMany(EventBookingPhase::class);
+    }
+
 
     public function eventPageMenu()
     {

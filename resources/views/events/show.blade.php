@@ -21,4 +21,7 @@
     </div>
     @endauth
     <x-event-page-menu :event="$event" />
+    &nbsp;
+    <x-event-booking-phase-display :event="$event" />
+    &nbsp;
 @endsection

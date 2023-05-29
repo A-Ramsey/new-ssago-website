@@ -46,7 +46,7 @@ class EventPageController extends Controller
 
         foreach($event->eventPages as $page){
             if ($page->title == $eventPage['title']){
-                throw ValidationException::withMessages(['Title' => 'Page with that title already exists']);
+                throw ValidationException::withMessages(['title' => 'Page with that title already exists']);
             }
         }
 
@@ -96,7 +96,7 @@ class EventPageController extends Controller
                 continue;
             }
             if ($page->title == $eventPage['title'] && $page->id != $eventPageId){
-                throw ValidationException::withMessages(['Title' => 'Page with that title already exists']);
+                throw ValidationException::withMessages(['title' => 'Page with that title already exists']);
             }
         }
 
