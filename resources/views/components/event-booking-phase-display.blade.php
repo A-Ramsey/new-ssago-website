@@ -12,8 +12,12 @@
 
             </div>
         @endforeach
-        <div class="list-group-item">
-            <a href="{{ route('event-booking-phases.create', [$event->id]) }}"><i class="fa-solid fa-plus"></i> Create</a>
-        </div>
+        @auth
+            @permission('event', $event)
+                <div class="list-group-item">
+                    <a href="{{ route('event-booking-phases.create', [$event->id]) }}"><i class="fa-solid fa-plus"></i> Create</a>
+                </div>
+            @endpermission
+        @endauth
     </div>
 </div>
