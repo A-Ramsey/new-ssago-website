@@ -12,12 +12,13 @@ class CheckBox extends Component
     public $isRequired;
     public $heading;
     public $isSwitch;
+    public $isDisabled;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $name, $checked=false, $isRequired=false, $heading=False, $isSwitch=False)
+    public function __construct($title, $name, $checked=false, $isRequired=false, $heading=False, $isSwitch=False, $isDisabled=false)
     {
         $this->title = $title;
         $this->name = $name;
@@ -28,6 +29,7 @@ class CheckBox extends Component
         if ($this->isSwitch && $this->checked == 1){
             $this->checked = 'on';
         }
+        $this->isDisabled = $isDisabled;
     }
 
     /**
@@ -44,6 +46,7 @@ class CheckBox extends Component
             $this->isRequired,
             $this->heading,
             $this->isSwitch,
+            $this->isDisabled,
         ]);
     }
 }

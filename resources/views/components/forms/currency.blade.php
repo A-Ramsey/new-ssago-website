@@ -4,6 +4,7 @@
         name="{{ $name }}" id="{{ $name }}" 
         value="{{ old($name, $value)}}"
         @if($isRequired) required @endif
+        @if($isDisabled) disabled @endif
         step="0.01"
         placeholder="{{ $title }}" aria-describedby="{{ $name }}-inp">
 </x-forms.input-wrapper>

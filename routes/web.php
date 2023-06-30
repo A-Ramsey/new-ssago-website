@@ -11,6 +11,7 @@ use App\Http\Controllers\TeamPinkController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventPageController;
 use App\Http\Controllers\EventBookingPhaseController;
+use App\Http\Controllers\EventBookingStageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +109,13 @@ Route::prefix('/events')->group(function () {
         Route::get('/{eventId}/phases/{eventBookingPhaseId}/edit', [EventBookingPhaseController::class, 'edit'])->name('event-booking-phases.edit');
         Route::post('/{eventId}/phases/{eventBookingPhaseId}/edit', [EventBookingPhaseController::class, 'update'])->name('event-booking-phases.update');
         Route::get('/{eventId}/phases/{eventBookingPhaseId}/delete', [EventBookingPhaseController::class, 'destroy'])->name('event-booking-phases.delete');
+
+        Route::get('/{eventId}/stages/create', [EventBookingStageController::class, 'create'])->name('event-booking-stages.create');
+        Route::post('/{eventId}/stages/create', [EventBookingStageController::class, 'store'])->name('event-booking-stages.store');
+        Route::get('/{eventId}/stages/{eventBookingStageId}/edit', [EventBookingStageController::class, 'edit'])->name('event-booking-stages.edit');
+        Route::post('/{eventId}/stages/{eventBookingStageId}/edit', [EventBookingStageController::class, 'update'])->name('event-booking-stages.update');
+        Route::get('/{eventId}/stages/{eventBookingStageId}/show', [EventBookingStageController::class, 'show'])->name('event-booking-stages.show');
+        Route::get('/{eventId}/stages/{eventBookingStageId}/delete', [EventBookingStageController::class, 'destroy'])->name('event-booking-stages.delete');
     });
     Route::get('/{eventId}/pages/{eventPageId}', [EventPageController::class, 'show'])->name('event-pages.show');
     Route::get('{id}/committee', [CommitteeController::class, 'showEventCommittee'])->name('events.committee');

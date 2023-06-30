@@ -11,19 +11,21 @@ class Select extends Component
     public $items; //list of ids and value
     public $isRequired;
     public $selected;
+    public $isDisabled;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $title, $items, $isRequired=false, $selected=-1)
+    public function __construct($name, $title, $items, $isRequired=false, $selected=-1, $isDisabled=false)
     {
         $this->name = $name;
         $this->title = $title;
         $this->items = $items;
         $this->isRequired = $isRequired;
         $this->selected = $selected;
+        $this->isDisabled = $isDisabled;
     }
 
     /**
@@ -39,6 +41,7 @@ class Select extends Component
             $this->items,
             $this->isRequired,
             $this->selected,
+            $this->isDisabled,
         ]);
     }
 }

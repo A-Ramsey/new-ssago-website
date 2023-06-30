@@ -1,5 +1,8 @@
 <div class="d-flex justify-content-left">
     <div class="list-group">
+        <div class="list-group-item">
+            <h4>Booking Phases</h4>
+        </div>
         @foreach ($eventBookingPhases as $eventBookingPhase)
             <div class="list-group-item">
                 <h4>{{ $eventBookingPhase->title }}</h4>

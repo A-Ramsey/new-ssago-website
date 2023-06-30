@@ -1,0 +1,72 @@
+{
+    "1": [
+        {
+            "name": "Name",
+            "type": 0,
+            "required": true
+        },
+        {
+            "name": "Address",
+            "type": 6,
+            "required": true
+        }
+    ],
+    "2": [
+        {
+            "name": "Method of Travel",
+            "type": 2,
+            "options": [
+                "Car",
+                "Bus",
+                "Train",
+                "Plane"
+            ]
+        },
+        {
+            "name": "Expected Arrival Time",
+            "type": 5
+        }
+    ],
+    "3": [
+        {
+            "name": "Activity",
+            "type": -1,
+            "dev-notes": "Needs a special type to allow for entry and selection of activities"
+        }
+    ],
+    "-1": [
+        {
+            "name": "Test",
+            "type": 0
+        },
+        {
+            "name": "Test",
+            "type": 1,
+            "required": true
+        },
+        {
+            "name": "Test",
+            "type": 2,
+            "options": [
+                "a", "b", "c"
+            ]
+        },
+        {
+            "name": "Test",
+            "type": 3,
+            "heading": "Test Heading"
+        },
+        {
+            "name": "Test",
+            "type": 4
+        },
+        {
+            "name": "Test",
+            "type": 5
+        },
+        {
+            "name": "Test",
+            "type": 6
+        }
+    ]
+}

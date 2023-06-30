@@ -10,17 +10,19 @@ class TextArea extends Component
     public $title;
     public $value;
     public $isRequired;
+    public $isDisabled;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $title, $value = "", $isRequired=false)
+    public function __construct($name, $title, $value = "", $isRequired=false, $isDisabled=false)
     {
         $this->name = $name;
         $this->title = $title;
         $this->value = $value;
         $this->isRequired = $isRequired;
+        $this->isDisabled = $isDisabled;
     }
 
     /**
@@ -35,6 +37,7 @@ class TextArea extends Component
             $this->title,
             $this->value,
             $this->isRequired,
+            $this->isDisabled,
         ]);
     }
 }

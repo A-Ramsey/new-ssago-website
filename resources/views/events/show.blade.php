@@ -24,4 +24,6 @@
     &nbsp;
     <x-event-booking-phase-display :event="$event" />
     &nbsp;
+    <x-event-booking-stages-display :event="$event" />
+    &nbsp;
 @endsection

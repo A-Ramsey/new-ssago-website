@@ -11,18 +11,20 @@ class Input extends Component
     public $value;
     public $isPassword;
     public $isRequired;
+    public $isDisabled;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $title, $value = "", $isPassword=false, $isRequired=false)
+    public function __construct($name, $title, $value = "", $isPassword=false, $isRequired=false, $isDisabled=false)
     {
         $this->name = $name;
         $this->title = $title;
         $this->value = $value;
         $this->isPassword = $isPassword;
         $this->isRequired = $isRequired;
+        $this->isDisabled = $isDisabled;
     }
 
     /**
@@ -38,6 +40,7 @@ class Input extends Component
             $this->value,
             $this->isPassword,
             $this->isRequired,
+            $this->isDisabled,
         ]);
     }
 }

@@ -8,6 +8,7 @@
         type="checkbox"
         @if(old($name, $checked)) checked @endif
         @if($isRequired) required @endif
+        @if($isDisabled) disabled @endif
         placeholder="{{ $title }}" aria-describedby="{{ $name }}-inp" />
     <label class="form-check-label" for="{{ $name }}">
         &nbsp;{{ $title }}
