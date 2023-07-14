@@ -12,30 +12,27 @@
     </div>
     <x-forms.form name="show-event-booking-stage" title="Preview {{ $eventBookingStage->name }} Stage" action="show">
         @foreach ($eventBookingStage->eventBookingStageFields as $eventBookingStageField)
-            @if ($eventBookingStageField->type == 0)
-                <x-forms.input name="{{ $eventBookingStageField->name }}" title="{{ $eventBookingStageField->name }}" is-disabled="true" />
-            @elseif ($eventBookingStageField->type == 1)
-                <x-forms.number name="{{ $eventBookingStageField->name }}" title="{{ $eventBookingStageField->name }}" is-disabled="true" />
-            @elseif ($eventBookingStageField->type == 2)
-                @php
-                    $options = json_decode($eventBookingStageField->field_info);
-                    $options = $options->options;
-                    $form_options = [];
-                    foreach ($options as $option) {
-                        $form_options[$option] = $option;
-                    }
-                @endphp
-                <x-forms.select name="{{ $eventBookingStageField->name }}" title="{{ $eventBookingStageField->name }}" is-disabled="true" :items="$form_options" />
-            @elseif ($eventBookingStageField->type == 3)
-                <x-forms.checkbox heading="{{ json_decode($eventBookingStageField->field_info)->heading }}" name="{{ $eventBookingStageField->name }}" title="{{ $eventBookingStageField->name }}" is-disabled="true" />
-            @elseif ($eventBookingStageField->type == 4)
-                <x-forms.currency name="{{ $eventBookingStageField->name }}" title="{{ $eventBookingStageField->name }}" is-disabled="true" />
-            @elseif ($eventBookingStageField->type == 5)
-                <x-forms.date-time name="{{ $eventBookingStageField->name }}" title="{{ $eventBookingStageField->name }}" is-disabled="true" />
-            @elseif ($eventBookingStageField->type == 6)
-                <x-forms.text-area name="{{ $eventBookingStageField->name }}" title="{{ $eventBookingStageField->name }}" is-disabled="true" />
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <x-bookings.form-item :field="$eventBookingStageField" />
+                </div>
+                <div class="input-group-append">
+            @if ($eventBookingStage->type->key == "Form")
+                <x-button title="Delete Field" link="{{ route('event-booking-stage-fields.delete', [$event->id, $eventBookingStage->id, $eventBookingStageField->id]) }}" is-danger="true" />
             @endif
+                </div>
+            </div>
         @endforeach
         <x-forms.button title="Next" name="Next" />
     </x-forms.form>
+    
+    @if ($eventBookingStage->type->key == "Form")
+        <div>
+        <x-forms.form name="add-field" title="Add Field" action="{{ route('event-booking-stage-fields.store', ['eventId' => $event->id, 'eventBookingStageId' => $eventBookingStage->id]) }}">
+            <x-forms.input name="name" title="Name" is-required="true" />
+            <x-forms.select name="type" title="Type" :items="$fieldTypes" is-required="true" />
+            <x-forms.button title="Add Field" name="Add Field" />
+        </x-forms.form>
+        </div>
+    @endif
 @endsection

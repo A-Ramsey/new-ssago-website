@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use App\Event;
 use App\EventBookingStage;
 use App\Enums\EventBookingStageTypeEnum;
+use App\Enums\EventBookingStageFieldTypeEnum;
 
 class EventBookingStageController extends Controller
 {
@@ -95,9 +96,15 @@ class EventBookingStageController extends Controller
     {
         $eventBookingStage = EventBookingStage::findOrFail($eventBookingStageId);
         $event = Event::findOrFail($eventId);
+        $eventBookingStageTypes = EventBookingStageFieldTypeEnum::getInstances();
+        $fieldTypes = [];
+        foreach ($eventBookingStageTypes as $type) {
+            $fieldTypes[$type->key] = $type->value;
+        }
         return view('event-booking-stages.show', [
             'event' => $event,
             'eventBookingStage' => $eventBookingStage,
+            'fieldTypes' => $fieldTypes,
         ]);
     }
 

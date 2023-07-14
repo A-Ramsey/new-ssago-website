@@ -12,6 +12,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventPageController;
 use App\Http\Controllers\EventBookingPhaseController;
 use App\Http\Controllers\EventBookingStageController;
+use App\Http\Controllers\EventBookingStageFieldController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,6 +117,9 @@ Route::prefix('/events')->group(function () {
         Route::post('/{eventId}/stages/{eventBookingStageId}/edit', [EventBookingStageController::class, 'update'])->name('event-booking-stages.update');
         Route::get('/{eventId}/stages/{eventBookingStageId}/show', [EventBookingStageController::class, 'show'])->name('event-booking-stages.show');
         Route::get('/{eventId}/stages/{eventBookingStageId}/delete', [EventBookingStageController::class, 'destroy'])->name('event-booking-stages.delete');
+
+        Route::post('/{eventId}/stages/{eventBookingStageId}/fields/create', [EventBookingStageFieldController::class, 'store'])->name('event-booking-stage-fields.store');
+        Route::get('/{eventId}/stages/{eventBookingStageId}/fields/{eventBookingStageFieldId}/delete', [EventBookingStageFieldController::class, 'destroy'])->name('event-booking-stage-fields.delete');
     });
     Route::get('/{eventId}/pages/{eventPageId}', [EventPageController::class, 'show'])->name('event-pages.show');
     Route::get('{id}/committee', [CommitteeController::class, 'showEventCommittee'])->name('events.committee');
