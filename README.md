@@ -1,4 +1,5 @@
 # New SSAGO Website
+## This is a hypothetical new website for SSAGO 
 
 ## Assumptions Made
 - There will always be exec and assistants
